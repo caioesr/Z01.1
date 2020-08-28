@@ -10,14 +10,14 @@
     "user-github": ""
   },
   "aluno-3": {
-    "nome": "",
-    "email-insper": "",
-    "user-github": ""
-  },
-  "aluno-4": {
     "nome": "Cicero Tiago Carneiro Valentim",
     "email-insper": "cicerotcv@al.insper.edu.br",
     "user-github": "cicerotcv"
+  },
+  "aluno-4": {
+    "nome": "",
+    "email-insper": "",
+    "user-github": ""
   },
   "aluno-5": {
     "nome": "",
