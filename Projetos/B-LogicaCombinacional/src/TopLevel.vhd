@@ -39,5 +39,15 @@ architecture rtl of TopLevel is
 ---------------
 begin
           
-
+	LEDR(0) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(1) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(2) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(3) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(4) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(5) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(6) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(7) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(8) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	LEDR(9) <= SW(9) and not SW(8) and not SW(7) and SW(6) and SW(5) and not SW(4) and SW(3) and not SW(2) and SW(1) and not SW(0);
+	
 end rtl;
