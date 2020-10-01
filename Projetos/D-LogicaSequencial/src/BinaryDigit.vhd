@@ -2,45 +2,45 @@
 -- by Luciano Soares
 -- BinaryDigit.vhd
 
-Library ieee;
-use ieee.std_logic_1164.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
 
-entity BinaryDigit is
-	port(
-		clock:   in STD_LOGIC;
-		input:   in STD_LOGIC;
-		load:    in STD_LOGIC;
-		output: out STD_LOGIC
+ENTITY BinaryDigit IS
+	PORT (
+		clock : IN STD_LOGIC;
+		input : IN STD_LOGIC;
+		load : IN STD_LOGIC;
+		output : OUT STD_LOGIC
 	);
-end entity;
+END ENTITY;
 
-architecture arch of BinaryDigit is
+ARCHITECTURE arch OF BinaryDigit IS
 
-	component FlipFlopD is
-		port(
-			clock:  in std_logic;
-			d:      in std_logic;
-			clear:  in std_logic;
-			preset: in std_logic;
-			q:     out std_logic
+	COMPONENT FlipFlopD IS
+		PORT (
+			clock : IN std_logic;
+			d : IN std_logic;
+			clear : IN std_logic;
+			preset : IN std_logic;
+			q : OUT std_logic
 		);
-	end component;
+	END COMPONENT;
 
-	component Mux2Way is
-		port (
-			a:   in  STD_LOGIC;
-			b:   in  STD_LOGIC;
-			sel: in  STD_LOGIC;
-			q:   out STD_LOGIC);
-	end component;
+	COMPONENT Mux2Way IS
+		PORT (
+			a : IN STD_LOGIC;
+			b : IN STD_LOGIC;
+			sel : IN STD_LOGIC;
+			q : OUT STD_LOGIC);
+	END COMPONENT;
 
-	signal dffout,muxout: std_logic;
+	SIGNAL dffout, muxout : std_logic;
 
-begin
+BEGIN
 
-	mux2: Mux2Way PORT MAP (dffout, input, load, muxout);
-	ffd:  FlipFlopD PORT MAP (clock, muxout, '0', '0', dffout);
+	mux2 : Mux2Way PORT MAP(dffout, input, load, muxout);
+	ffd : FlipFlopD PORT MAP(clock, muxout, '0', '0', dffout);
 
 	output <= dffout;
 
-end architecture;
+END ARCHITECTURE;
