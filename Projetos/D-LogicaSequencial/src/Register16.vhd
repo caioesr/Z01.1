@@ -25,7 +25,31 @@ architecture arch of Register16 is
 		);
 	end component;
 
+	signal sinalinput: STD_LOGIC_VECTOR(15 downto 0);
+	signal sinalload: STD_LOGIC;
+	signal sinalout: STD_LOGIC_VECTOR(15 downto 0);
+
 begin
 
+	sinalinput <= input;
+	sinalload <= load;
+
+	q0: Register8 port map(
+							
+		clock,
+		sinalinput(15 downto 8),
+		load,
+		sinalout(15 downto 8)
+	);
+		
+	q1: Register8 port map(
+						
+		clock,
+		sinalinput(7 downto 0),
+		load,
+		sinalout(7 downto 0)
+	);
+
+	output <= sinalout;	
 
 end architecture;
