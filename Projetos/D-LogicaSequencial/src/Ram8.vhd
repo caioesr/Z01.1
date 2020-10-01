@@ -59,10 +59,7 @@ ARCHITECTURE arch OF Ram8 IS
 
 BEGIN
 
-    _input : DMux8Way PORT MAP(
-        load, address, load0, load1, load2,
-        load3, load4, load5, load6, load7
-    );
+    dmux : DMux8Way PORT MAP(load, address, load0, load1, load2, load3, load4, load5, load6, load7);
 
     reg0 : Register16 PORT MAP(clock, input, load0, output0);
     reg1 : Register16 PORT MAP(clock, input, load1, output1);
@@ -73,9 +70,6 @@ BEGIN
     reg6 : Register16 PORT MAP(clock, input, load6, output6);
     reg7 : Register16 PORT MAP(clock, input, load7, output7);
 
-    _output : Mux8Way16 PORT MAP(
-        outpu0, output1, output2, output3, output4,
-        output5, output6, output7, address, output
-    );
+    mux : Mux8Way16 PORT MAP(output0, output1, output2, output3, output4, output5, output6, output7, address, output);
 
 END ARCHITECTURE;
