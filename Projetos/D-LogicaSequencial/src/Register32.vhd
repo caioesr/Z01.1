@@ -25,7 +25,29 @@ architecture arch of Register32 is
       );
 	end component;
 
+signal signalInput: STD_LOGIC_VECTOR(31 downto 0);
+signal signalLoad: STD_LOGIC;
+signal signalOutput: STD_LOGIC_VECTOR(31 downto 0);
+
 begin
 
+	signalInput <= input;
+	signalLoad <= load;
+
+	q0 : Register16 port map(
+		clock,
+		signalInput(31 downto 16),
+		load,
+		signalOutput(31 downto 16)
+	);
+
+	q1 : Register16 port map(
+		clock,
+		signalInput(15 downto 0),
+		load,
+		signalOutput(15 downto 0)
+	);
+
+	output <= signalOutput;
 
 end architecture;
