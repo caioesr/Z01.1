@@ -10,7 +10,7 @@ entity Ram64 is
 		clock:   in  STD_LOGIC;
 		input:   in  STD_LOGIC_VECTOR(15 downto 0);
 		load:    in  STD_LOGIC;
-		address: in  STD_LOGIC_VECTOR( 5 downto 0);
+		address: in  STD_LOGIC_VECTOR(5 downto 0);
 		output:  out STD_LOGIC_VECTOR(15 downto 0)
 	);
 end entity;
@@ -59,6 +59,7 @@ architecture arch of Ram64 is
 	signal output0, output1, output2, output3, output4, output5, output6, output7 : STD_LOGIC_VECTOR(15 downto 0);
 
 begin
+
 	
 	DMX64: DMux8Way port map (
 		a => load,
@@ -152,4 +153,5 @@ begin
 		address => address(2 downto 0),
 		output => output7
 	);
+
 end architecture;
