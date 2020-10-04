@@ -25,29 +25,20 @@ architecture arch of Register64 is
       );
 	end component;
 
-	signal signalInput: STD_LOGIC_VECTOR(63 downto 0);
-	signal signalLoad: STD_LOGIC;
-	signal signalOutput: STD_LOGIC_VECTOR(63 downto 0);
-
 begin
-
-	signalInput <= input;
-	signalLoad <= load;
-
-	q0 : Register32 port map(
-		clock,
-		signalInput(63 downto 32),
-		load,
-		signalOutput(63 downto 32)
+	bit_reg64_0: Register32
+	port map(
+			clock => clock,
+			load => load,
+			input => input(31 downto 0),
+			output => output(31 downto 0)
 	);
 
-	q1 : Register32 port map(
-		clock,
-		signalInput(31 downto 0),
-		load,
-		signalOutput(31 downto 0)
+	bit_reg64_1: Register32
+	port map(
+			clock => clock,
+			load => load,
+			input => input(63 downto 32),
+			output => output(63 downto 32)
 	);
-
-	output <= signalOutput;
-
 end architecture;
