@@ -8,8 +8,8 @@
 ; em RAM[0] e 0 caso contrário.
 ; 
 ; A palavra possui tamanho fixo de 5 caracteres,
-; começando no endereço 10 da RAM e terminando no
-; endereço 14 da RAM. A palavra é codificado em
+; começando no ELSEereço 10 da RAM e terminando no
+; ELSEereço 14 da RAM. A palavra é codificado em
 ; ASCII.
 
 ; exemplo:
@@ -21,3 +21,46 @@
 ; 
 
  
+leaw $10, %A
+movw (%A), %D
+leaw $14, %A
+subw (%A), %D, %D
+
+leaw $NEXT1, %A
+je %D
+nop
+
+leaw $ELSE, %A
+jmp
+nop
+
+NEXT1:
+    leaw $11, %A
+    movw (%A), %D
+    leaw $13, %A
+    subw (%A), %D, %D
+
+    leaw $NEXT2, %A
+    je %D
+    nop
+
+    leaw $ELSE, %A
+    jmp
+    nop
+
+NEXT2:
+    leaw $1, %A
+    movw %A, %D
+    leaw $0, %A
+    movw %D, (%A)
+
+    leaw $END, %A
+    jmp
+    nop
+
+ELSE:
+    leaw $0, %A
+    movw %A, %D
+    movw %D, (%A)
+
+END:
