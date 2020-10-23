@@ -19,3 +19,85 @@
 ; RAM[7]:  1  | RAM[7]:  1 |
 ; RAM[8]:  4  | RAM[8]:  4 -
 ; ------------------------------------
+
+leaw $5, %A
+movw %A, %D
+leaw $2, %A
+movw %D, (%A)
+
+leaw $4, %A
+movw (%A), %D
+leaw $3, %A
+movw %D, (%A)
+
+LOOP:
+leaw $2, %A
+
+movw (%A), %D
+
+movw %D, %A
+
+movw (%A), %D
+
+leaw $1, %A
+
+addw (%A), %D, %D
+
+movw %D, (%A)
+
+leaw $2, %A
+
+movw (%A), %D
+
+incw %D
+
+movw %D, (%A)
+
+leaw $4, %A
+
+movw (%A), %D
+
+decw %D
+
+movw %D, (%A)
+
+leaw $LOOP, %A
+
+jg %D
+nop
+
+leaw $1, %A
+movw (%A), %D
+leaw $var1, %A
+movw %D, (%A)
+
+SLOOP:
+leaw $3, %A
+
+movw (%A), %D
+
+leaw $var1, %A                       
+
+movw (%A), %A
+
+subw %A, %D, %A           
+
+movw %A, %D
+
+leaw $IF, %A
+jge %D
+nop
+leaw $END, %A
+jmp
+nop 
+
+IF:
+leaw $var1, %A
+movw %D, (%A)     
+leaw $0, %A     
+movw (%A), %D  
+addw $1, %D, (%A)   
+leaw $SLOOP, %A
+jmp
+nop
+END:
