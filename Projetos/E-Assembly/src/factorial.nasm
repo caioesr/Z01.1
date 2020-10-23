@@ -107,18 +107,18 @@ CASE1:
             jmp                 ; go to MULTI
             nop
 
-            ; R1 = R4
-            leaw $4, %A         ; A = 4
-            movw %A, %D         ; D = 4
-            leaw $1, %A         ; A = 1
-            movw %D, (%A)       ; R1 = R4
-
         LEAVE:
-            ; R0 = = R0 - 1
-            leaw $0, %A         ; A = 0
-            movw (%A), %D       ; D = R0
-            decw %D             ; D = D - 1   (R0 - 1)
-            movw %D, (%A)       ; R0 = D      (R0 - 1)
+        ; R1 = R4
+        leaw $4, %A         ; A = 4
+        movw %A, %D         ; D = 4
+        leaw $1, %A         ; A = 1
+        movw %D, (%A)       ; R1 = R4
+
+        ; R0 = = R0 - 1
+        leaw $0, %A         ; A = 0
+        movw (%A), %D       ; D = R0
+        decw %D             ; D = D - 1   (R0 - 1)
+        movw %D, (%A)       ; R0 = D      (R0 - 1)
 
         ; loop again
         leaw $WHILE, %A     ; A = $WHILE
