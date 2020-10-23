@@ -23,7 +23,7 @@ leaw $END, %A           ; A = $END
 jge %D                  ; D >= 0 salta para $END
 nop                     ; ¯\_(ツ)_/¯
 
-negw %D                 ; D = !D
+negw %D                 ; D = -D
 
 END:
     leaw $0, %A         ; A = 0
