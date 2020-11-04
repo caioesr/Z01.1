@@ -1,8 +1,8 @@
 vlib work
 
-vcom -reportprogress 300 -work work ../../B-LogicaCombinacional/src/rtl/*.vhd
-vcom -reportprogress 300 -work work ../../C-UnidadeLogicaAritmetica/src/rtl/*.vhd
-vcom -reportprogress 300 -work work ../../D-LogicaSequencial/src/rtl/*.vhd
+vcom -reportprogress 300 -work work ../../B-LogicaCombinacional/src/*.vhd
+vcom -reportprogress 300 -work work ../../C-UnidadeLogicaAritmetica/src/*.vhd
+vcom -reportprogress 300 -work work ../../D-LogicaSequencial/src/*.vhd
 
 vcom -reportprogress 300 -work work ../src/rtl/MemoryIO.vho
 vcom -reportprogress 300 -work work ../src/rtl/ControlUnit.vhd
