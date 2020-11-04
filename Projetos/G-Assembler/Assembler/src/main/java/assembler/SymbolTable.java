@@ -47,8 +47,7 @@ public class SymbolTable {
      * @return valor numérico associado ao símbolo procurado.
      */
     public Integer getAddress(String symbol) {
-        /* TODO: implementar */
-    	return null;
+        return symbolTable.get(symbol);
     }
 
     /**
@@ -60,7 +59,18 @@ public class SymbolTable {
     //
     public void initialize() {
         // Exemplo: Registradores Virtuais
-        this.addEntry("R0", 0);
-        /* TODO: implementar */
+
+        for (int i = 0; i < 16; i++){
+            this.addEntry("R"+ i, i);
+        }
+
+        this.addEntry("SP", 0);
+        this.addEntry("LCL", 1);
+        this.addEntry("ARG", 2);
+        this.addEntry("THIS", 3);
+        this.addEntry("THAT", 4);
+        this.addEntry("SCREEN", 16384);
+        this.addEntry("LED", 21184);
+        this.addEntry("SW", 21185);
     }
 }
