@@ -28,7 +28,7 @@ public class SymbolTable {
      * @param  address símbolo a ser armazenado na tabela de símbolos.
      */
     public void addEntry(String symbol, int address) {
-        return symbolTable.put(symbol, address);
+        symbolTable.put(symbol, address);
         /* TODO: implementar */
     }
 
