@@ -28,6 +28,7 @@ public class SymbolTable {
      * @param  address símbolo a ser armazenado na tabela de símbolos.
      */
     public void addEntry(String symbol, int address) {
+        symbolTable.put(symbol, address);
         /* TODO: implementar */
     }
 
@@ -38,7 +39,7 @@ public class SymbolTable {
      */
     public Boolean contains(String symbol) {
         /* TODO: implementar */
-        return null;
+        return symbolTable.containsKey(symbol);
     }
 
     /**
