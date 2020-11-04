@@ -95,6 +95,7 @@ ARCHITECTURE logic OF MemoryIO IS
 	SIGNAL SW16 : STD_LOGIC_VECTOR(15 downto 0);
   SIGNAL LED16 : STD_LOGIC_VECTOR(15 downto 0);
 
+
 BEGIN
 
   RAM: RAM16K
@@ -130,16 +131,6 @@ BEGIN
         input => INPUT,
         load  => LOAD_LED,
         output => LED16
-        );
-
-    MUX: Mux4Way16 
-      port map(
-        sel => SEL_MUX,
-        a => OUTPUT_RAM,
-        b => SW16,
-        c => SW16,
-        d => SW16,
-        q => OUTPUT
         );
 
     ----------------------------------------
