@@ -54,4 +54,4 @@ script:
   - python3 Projetos/C-UnidadeLogicaAritmetica/testeULA.py
   - python3 Projetos/F-Computador/testeHW.py lib.tb_memoryio.all
   - python3 Projetos/F-Computador/testeHW.py lib.tb_controlunit.all
-  - python3 Projetos/G-Assembler/testeAssembler.py
+  - python3 Projetos/G-Assembler/genJAR.py
