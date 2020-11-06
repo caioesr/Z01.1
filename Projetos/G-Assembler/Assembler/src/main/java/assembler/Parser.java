@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 /**
  * Encapsula o código de leitura. Carrega as instruções na linguagem assembly,
@@ -88,8 +89,30 @@ public class Parser {
      * @return o tipo da instrução.
      */
     public CommandType commandType(String command) {
-        /* TODO: implementar */
-    	return null;
+        String arr[] = command.split(" ");
+        switch (arr[0]){
+            case "leaw": return CommandType.A_COMMAND;
+            case "movw":
+            case "nop":
+            case "jmp":
+            case "je":
+            case "jl":
+            case "jle":
+            case "jne":
+            case "jg":
+            case "jge":
+            case "subw":
+            case "addw":
+            case "rsubw":
+            case "incw":
+            case "decw":
+            case "negw":
+            case "notw":
+            case "andw":
+            case "orw":
+                return CommandType.C_COMMAND;
+            default: return CommandType.L_COMMAND;
+        }
     }
 
     /**
@@ -99,8 +122,12 @@ public class Parser {
      * @return somente o símbolo ou o valor número da instrução.
      */
     public String symbol(String command) {
-        /* TODO: implementar */
-    	return null;
+        String value = new String();
+        if(commandType(command) == CommandType.A_COMMAND){
+            value = command.substring(command.indexOf("$") + 1);
+            value = value.substring(0, value.indexOf(","));
+        }
+        return value;
     }
 
     /**
@@ -110,8 +137,11 @@ public class Parser {
      * @return o símbolo da instrução (sem os dois pontos).
      */
     public String label(String command) {
-        /* TODO: implementar */
-    	return null;
+        String value = new String();
+        if(commandType(command) == CommandType.L_COMMAND){
+            value = command.substring(0, command.indexOf(":"));
+        }
+        return value;
     }
 
     /**
@@ -121,8 +151,9 @@ public class Parser {
      * @return um vetor de string contento os tokens da instrução (as partes do comando).
      */
     public String[] instruction(String command) {
-        /* TODO: implementar */
-    	return null;
+        command = command.replace(",", " ");
+        String arr[] = command.split(" ");
+        return arr;
     }
 
 
