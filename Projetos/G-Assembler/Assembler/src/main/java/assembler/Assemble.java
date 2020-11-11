@@ -58,6 +58,9 @@ public class Assemble {
                 /* TODO: implementar */
                 // deve verificar se tal label já existe na tabela,
                 // se não, deve inserir. Caso contrário, ignorar.
+                if (!table.contains(label)){
+                  table.addEntry(label, romAddress);
+                }
             }
             romAddress++;
         }
@@ -78,8 +81,12 @@ public class Assemble {
                     // deve verificar se tal símbolo já existe na tabela,
                     // se não, deve inserir associando um endereço de
                     // memória RAM a ele.
+                    if(!table.contains(symbol)){
+                        table.addEntry(symbol, ramAddress);
+                    }
                 }
             }
+            ramAddress++;
         }
         parser.close();
         return table;
@@ -105,9 +112,14 @@ public class Assemble {
         while (parser.advance()){
             switch (parser.commandType(parser.command())){
                 /* TODO: implementar */
-                case C_COMMAND:
+            case C_COMMAND:
+                String[] set = parser.instruction(parser.command());
+
+                instruction += Code.comp(new String[]{set[0], set[1]});
                 break;
             case A_COMMAND:
+                instruction = parser.symbol(parser.command());
+                System.out.println("Instruction A " + instruction);
                 break;
             default:
                 continue;

@@ -31,11 +31,11 @@ public class AssembleTest {
         SymbolTable table = assembler.fillSymbolTable();
         assertTrue("R1",table.contains("R1")==true);
         assertTrue("$impar",table.contains("impar")==true);
-        assertTrue("$impar",table.getAddress("impar")==12);
+        assertTrue("$impar",table.getAddress("impar")==13);
         assertTrue("$par",table.contains("par")==true);
         assertTrue("$par",table.getAddress("par")==2);
         assertTrue("$end",table.contains("end")==true);
-        assertTrue("$end",table.getAddress("end")==14);
+        assertTrue("$end",table.getAddress("end")==16);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class AssembleTest {
         assembler.generateMachineCode();
         assembler.close();
         BufferedReader fileReader = new BufferedReader(new FileReader(outFile));
-        assertEquals(fileReader.readLine(),"000000000000000101"); // leaw $5, %A
+        assertEquals("000000000000000101", fileReader.readLine()); // leaw $5, %A
         assertEquals(fileReader.readLine(),"100011100000010000"); // movw (%A), %D
         assertEquals(fileReader.readLine(),"000000000000000001"); // leaw $1, %A
         assertEquals(fileReader.readLine(),"100000000000010000"); // andw %A, %D, %D
