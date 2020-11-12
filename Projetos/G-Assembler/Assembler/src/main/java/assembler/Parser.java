@@ -151,10 +151,9 @@ public class Parser {
      * @return um vetor de string contento os tokens da instrução (as partes do comando).
      */
     public String[] instruction(String command) {
+        command = command.replace(", ",",");
         command = command.replace(",", " ");
         String arr[] = command.split(" ");
         return arr;
     }
-
-
 }

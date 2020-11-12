@@ -113,13 +113,21 @@ public class Assemble {
             switch (parser.commandType(parser.command())){
                 /* TODO: implementar */
             case C_COMMAND:
-                String[] set = parser.instruction(parser.command());
-
-                instruction += Code.comp(new String[]{set[0], set[1]});
+                instruction = "";
+                String[] instructionSet = parser.instruction(parser.command());
+                String comp = Code.comp(instructionSet);
+                String dest = Code.dest(instructionSet);
+                String jump = Code.jump(instructionSet);
+                instruction += "10" + comp + dest + jump;
                 break;
             case A_COMMAND:
-                instruction = parser.symbol(parser.command());
-                System.out.println("Instruction A " + instruction);
+                String symbol = parser.symbol(parser.command());
+                try{
+                    instruction = "00" + Code.toBinary(symbol);
+                } catch (Exception e){
+                    String ramAddress = table.getAddress(symbol).toString();
+                    instruction = "00" + Code.toBinary(ramAddress);
+                }
                 break;
             default:
                 continue;
