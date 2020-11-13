@@ -72,15 +72,30 @@ class AssemblerZ01 {
         // Starts to read file and generates de outputs
         try {
             // Cria objeto assembler auxiliar
+            if(verbose){
+                System.out.println("Creating assembler...");
+            }
             Assemble assembler = new Assemble(  inputFile,
                                                 outputFileHack,
                                                 verbose);
 
+            if(verbose){
+                System.out.println("Filling assembler symbol table...");
+            }
             // Cria tabela de símbolos
             assembler.fillSymbolTable();
+            if(verbose){
+                System.out.println("Symbol table created");
+            }
 
+            if(verbose){
+                System.out.println("Generating machine code...");
+            }
             // Cria linguagem de maquina
             assembler.generateMachineCode();
+            if(verbose){
+                System.out.println("Machine code generated");
+            }
 
             // Fecha arquivos
             assembler.close();
